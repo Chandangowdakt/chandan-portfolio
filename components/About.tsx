@@ -10,6 +10,16 @@ const paragraphs = [
   "I'm driven by problems that sit at the crossroads of hardware and software — where clinical precision meets scalable engineering.",
 ];
 
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, x: -10 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+};
+
 export default function About() {
   return (
     <section id="about" className="py-16 md:py-24">
@@ -58,8 +68,14 @@ export default function About() {
   domain: "Biomedical + Software",
 }`}
             </pre>
-            <div className="relative z-10 space-y-6">
-              <div>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              className="relative z-10 space-y-6"
+            >
+              <motion.div variants={item}>
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#2dd4bf]">
                   Education
                 </h3>
@@ -69,18 +85,18 @@ export default function About() {
                 <p className="mt-1 text-sm text-[#94a3b8]">
                   BMSCE Bengaluru | 2023–2027
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="border-t border-[#1e293b] pt-6">
+              <motion.div variants={item} className="border-t border-[#1e293b] pt-6">
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#2dd4bf]">
                   Academic
                 </h3>
                 <p className="text-sm text-[#94a3b8]">
                   PUC: 88.5% | SSLC: 97.44%
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="border-t border-[#1e293b] pt-6">
+              <motion.div variants={item} className="border-t border-[#1e293b] pt-6">
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#2dd4bf]">
                   Certification
                 </h3>
@@ -90,9 +106,9 @@ export default function About() {
                 <p className="mt-1 text-sm text-[#94a3b8]">
                   MathWorks | 2024
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="border-t border-[#1e293b] pt-6">
+              <motion.div variants={item} className="border-t border-[#1e293b] pt-6">
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#2dd4bf]">
                   Current Role
                 </h3>
@@ -102,8 +118,8 @@ export default function About() {
                 <p className="mt-1 text-sm text-[#94a3b8]">
                   Growteq Agri Tech Pvt Ltd · Jan 2026–Present
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

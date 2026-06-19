@@ -19,7 +19,7 @@ export const aboutText = [
 
 export const skills = {
   "Biomedical": ["ECG/PPG Signal Acquisition", "MATLAB Signal Processing", "QRS Detection", "HRV Analysis", "Biomedical Instrumentation", "Patient Monitoring Systems"],
-  "Embedded & IoT": ["ESP32", "Arduino", "Embedded C", "SPI/I2C/UART", "RTOS Basics", "Real-Time Data Acquisition"],
+  "Embedded & IoT": ["ESP32", "Arduino", "Embedded C", "SPI/I2C/UART", "RTOS Basics", "Real-Time Data Acquisition", "VLSI Design"],
   "Backend & Cloud": ["Node.js", "Express.js", "REST API Design", "JWT Authentication", "MongoDB Atlas", "Render", "Vercel"],
   "Frontend": ["Next.js 14", "React", "TypeScript", "TailwindCSS", "HTML5/CSS3"],
   "AI & Computer Vision": ["Python", "OpenCV", "TensorFlow", "EfficientNetB0", "GradCAM", "TFLite"],

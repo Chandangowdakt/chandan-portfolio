@@ -11,12 +11,7 @@ type Project = (typeof projects)[number];
 const featuredProjects = projects.filter((project) => project.featured);
 const otherProjects = projects.filter((project) => !project.featured);
 
-const cardHover = {
-  y: -6,
-  boxShadow:
-    "0 0 0 1px rgba(45,212,191,0.4), 0 8px 32px rgba(45,212,191,0.08)",
-  transition: { duration: 0.2 },
-};
+const cardHover = { y: -4, transition: { duration: 0.2 } };
 
 function StackPills({ stack, compact = false }: { stack: string[]; compact?: boolean }) {
   return (
@@ -59,11 +54,8 @@ function GitHubLink({ project, size = 20 }: { project: Project; size?: number })
 
 function FeaturedCard({ project }: { project: Project }) {
   return (
-    <motion.article
-      whileHover={cardHover}
-      className="group relative flex h-full will-change-transform flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-6"
-    >
-      <span className="absolute right-4 top-4 rounded-full border border-[#2dd4bf]/30 bg-[#2dd4bf]/10 px-2 py-0.5 text-xs text-[#2dd4bf]">
+    <article className="group relative flex h-full flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-6">
+      <span className="absolute right-4 top-4 rounded-full border border-[#2dd4bf]/20 bg-[#2dd4bf]/10 px-2 py-0.5 text-xs font-medium text-[#2dd4bf]">
         Featured ✦
       </span>
       <span className="mb-3 inline-block w-fit rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-xs text-[#2dd4bf]">
@@ -79,16 +71,13 @@ function FeaturedCard({ project }: { project: Project }) {
       <div className="mt-auto pt-6">
         <GitHubLink project={project} />
       </div>
-    </motion.article>
+    </article>
   );
 }
 
 function CompactCard({ project }: { project: Project }) {
   return (
-    <motion.article
-      whileHover={cardHover}
-      className="group flex h-full will-change-transform flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-4"
-    >
+    <article className="group relative flex h-full flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-4">
       <span className="mb-2 inline-block w-fit rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-2.5 py-0.5 text-xs text-[#2dd4bf]">
         {project.category}
       </span>
@@ -99,7 +88,7 @@ function CompactCard({ project }: { project: Project }) {
       <div className="mt-auto pt-4">
         <GitHubLink project={project} size={18} />
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -125,6 +114,7 @@ export default function Projects() {
               key={project.id}
               initial={{ opacity: 0, y: 32 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+              whileHover={cardHover}
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
@@ -152,6 +142,7 @@ export default function Projects() {
                   key={project.id}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
+                  whileHover={cardHover}
                   transition={{
                     duration: 0.5,
                     ease: "easeOut",

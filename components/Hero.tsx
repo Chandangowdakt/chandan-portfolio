@@ -1,44 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import { heroFadeUp } from "@/lib/animations";
 
-const nameLetters = "CHANDAN K T".split("");
-const TAGLINE =
-  "I build at the intersection of biomedical hardware and software — from real-time ECG systems to production web platforms.";
+const name = "CHANDAN K T";
+const letters = name.split("");
 
-const floatingBadges = [
-  { label: "ESP32", className: "right-[8%] top-[18%]", duration: 4 },
-  { label: "Next.js", className: "left-[6%] top-[45%]", duration: 6 },
-  { label: "TensorFlow", className: "right-[12%] bottom-[22%]", duration: 5 },
+const badges = [
+  { text: "ESP32", top: "20%", left: "8%", duration: 4 },
+  { text: "Next.js", top: "60%", left: "85%", duration: 6 },
+  { text: "TensorFlow", top: "75%", left: "10%", duration: 5 },
 ];
 
 export default function Hero() {
-  const [displayed, setDisplayed] = useState("");
-  const [typingDone, setTypingDone] = useState(false);
+  const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const [blinkCursor, setBlinkCursor] = useState(true);
+  const fullText =
+    "I build at the intersection of biomedical hardware and software — from real-time ECG systems to production web platforms.";
 
   const handleProjectsClick = () => {
     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
+    let i = 0;
     let interval: ReturnType<typeof setInterval> | undefined;
 
     const startDelay = setTimeout(() => {
-      let index = 0;
       interval = setInterval(() => {
-        index += 1;
-        setDisplayed(TAGLINE.slice(0, index));
-        if (index >= TAGLINE.length) {
+        if (i < fullText.length) {
+          setDisplayText(fullText.slice(0, i + 1));
+          i++;
+        } else {
           if (interval) clearInterval(interval);
-          setTypingDone(true);
+          setTimeout(() => setShowCursor(false), 3000);
         }
-      }, 30);
-    }, 1000);
+      }, 28);
+    }, 1200);
 
     return () => {
       clearTimeout(startDelay);
@@ -46,31 +46,13 @@ export default function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!typingDone) return;
-
-    const blink = setInterval(() => {
-      setBlinkCursor((prev) => !prev);
-    }, 500);
-
-    const stop = setTimeout(() => {
-      clearInterval(blink);
-      setShowCursor(false);
-    }, 3000);
-
-    return () => {
-      clearInterval(blink);
-      clearTimeout(stop);
-    };
-  }, [typingDone]);
-
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden py-16 pt-16 md:py-32">
       <motion.div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(45,212,191,0.12) 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, rgba(45,212,191,0.1) 1px, transparent 0)",
           backgroundSize: "40px 40px",
         }}
         initial={{ opacity: 0 }}
@@ -79,20 +61,20 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {floatingBadges.map((badge) => (
+      {badges.map((badge) => (
         <motion.span
-          key={badge.label}
-          className={`pointer-events-none absolute z-0 font-mono text-xs text-[#2dd4bf] opacity-[0.08] will-change-transform ${badge.className}`}
-          animate={{ y: [-8, 8] }}
+          key={badge.text}
+          style={{ position: "absolute", top: badge.top, left: badge.left }}
+          animate={{ y: [-8, 8, -8] }}
           transition={{
             duration: badge.duration,
             repeat: Infinity,
-            repeatType: "reverse",
             ease: "easeInOut",
           }}
+          className="pointer-events-none hidden select-none font-mono text-xs text-[#2dd4bf] opacity-[0.07] lg:block"
           aria-hidden="true"
         >
-          {badge.label}
+          {badge.text}
         </motion.span>
       ))}
 
@@ -128,49 +110,56 @@ export default function Hero() {
           Medical Electronics · Embedded Systems · Full Stack
         </motion.p>
 
-        <div className="flex flex-col items-center">
-          <h1 className="font-black text-6xl tracking-tight md:text-7xl lg:text-8xl">
-            {nameLetters.map((letter, i) => (
-              <motion.span
-                key={`${letter}-${i}`}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.3 + i * 0.04,
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-                className={
-                  letter === " "
-                    ? "mr-4"
-                    : "inline-block will-change-transform bg-gradient-to-r from-white via-[#e2e8f0] to-[#2dd4bf] bg-clip-text text-transparent"
-                }
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </h1>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
-            style={{ transformOrigin: "left" }}
-            className="mt-4 h-[3px] w-[120px] will-change-transform rounded-full bg-[#2dd4bf]"
-          />
-        </div>
-
-        <p className="mt-6 min-h-[4.5rem] max-w-[600px] text-left text-lg text-[#94a3b8] sm:min-h-[3.5rem] sm:text-center sm:text-xl">
-          {displayed}
-          {showCursor && (
-            <span
-              className={`ml-0.5 inline-block text-[#2dd4bf] ${
-                typingDone && !blinkCursor ? "opacity-0" : "opacity-100"
-              }`}
+        <h1 className="mb-4 flex flex-wrap items-end justify-center gap-0 leading-none">
+          {letters.map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 50, rotateX: -90 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{
+                delay: 0.2 + i * 0.05,
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className={
+                char === " "
+                  ? "block w-4 md:w-6 lg:w-8"
+                  : "inline-block select-none bg-gradient-to-br from-white via-[#e2e8f0] to-[#2dd4bf] bg-clip-text text-6xl font-black tracking-tighter text-transparent md:text-7xl lg:text-8xl"
+              }
+              style={{ transformOrigin: "bottom center" }}
             >
-              |
-            </span>
+              {char === " " ? null : char}
+            </motion.span>
+          ))}
+        </h1>
+
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.6, ease: "easeOut" }}
+          style={{ transformOrigin: "left center" }}
+          className="mx-auto mb-6 mt-2 h-1 w-24 rounded-full bg-gradient-to-r from-[#2dd4bf] to-transparent"
+        />
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.4 }}
+          className="mx-auto min-h-[3.5rem] max-w-2xl text-lg leading-relaxed text-[#94a3b8] md:text-xl"
+        >
+          {displayText}
+          {showCursor && (
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{
+                duration: 0.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="ml-0.5 inline-block h-5 w-0.5 align-middle bg-[#2dd4bf]"
+            />
           )}
-        </p>
+        </motion.p>
 
         <motion.div
           custom={0.6}
@@ -197,16 +186,14 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        <motion.p
-          custom={0.9}
-          initial="hidden"
-          animate="visible"
-          variants={heroFadeUp}
+        <motion.div
+          animate={{ y: [0, -4, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="mt-12 text-sm text-[#94a3b8] sm:text-base"
         >
           B.E. Medical Electronics | BMSCE Bengaluru | Intern @
           Growteq Agri Tech
-        </motion.p>
+        </motion.div>
       </div>
     </section>
   );

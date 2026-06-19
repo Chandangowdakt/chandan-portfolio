@@ -101,10 +101,19 @@ export default function Navbar() {
 
           <LayoutGroup>
             <ul className="hidden items-center gap-8 md:flex">
-              {navLinks.map((link) => {
+              {navLinks.map((link, index) => {
                 const isActive = activeSection === link.href.slice(1);
                 return (
-                  <li key={link.href}>
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: 0.5 + index * 0.05,
+                      duration: 0.4,
+                      ease: "easeOut",
+                    }}
+                  >
                     <a
                       href={link.href}
                       onClick={(e) => {
@@ -126,7 +135,7 @@ export default function Navbar() {
                         />
                       )}
                     </a>
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>

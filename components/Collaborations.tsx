@@ -54,10 +54,10 @@ export default function Collaborations() {
             {collaborations.map((item, index) => (
               <motion.article
                 key={item.org}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -48 : 48 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.15 }}
                 className="group flex gap-4 will-change-transform rounded-lg border border-[#1e293b] bg-[#111827] p-4"
               >
                 <div className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[#2dd4bf]" />

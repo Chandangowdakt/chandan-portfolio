@@ -17,13 +17,8 @@ const categories = [
 function SkillTag({ skill }: { skill: string }) {
   return (
     <motion.span
-      whileHover={{
-        scale: 1.05,
-        backgroundColor: "rgba(45, 212, 191, 0.15)",
-        borderColor: "#2dd4bf",
-      }}
-      transition={{ duration: 0.2 }}
-      className="will-change-transform cursor-default rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf]"
+      whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
+      className="will-change-transform cursor-default rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf] hover:border-[#2dd4bf] hover:bg-[rgba(45,212,191,0.15)]"
     >
       {skill}
     </motion.span>

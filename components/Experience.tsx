@@ -38,9 +38,13 @@ export default function Experience() {
                 {item.company}
               </h3>
               <p className="mt-1 text-[#2dd4bf]">{item.role}</p>
-              <p className="mt-2 text-sm text-[#94a3b8]">
+              <span className="mt-2 flex items-center gap-2 text-sm text-[#94a3b8]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#2dd4bf] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#2dd4bf]" />
+                </span>
                 {item.period} · {item.location}
-              </p>
+              </span>
               <ul className="mt-5 space-y-3">
                 {item.bullets.map((bullet) => (
                   <li
@@ -69,10 +73,8 @@ export default function Experience() {
             />
             <div>
               <p className="font-medium text-[#e2e8f0]">
-                B.E. Medical Electronics Engineering
-              </p>
-              <p className="mt-1 text-sm text-[#94a3b8]">
-                BMSCE Bengaluru, 2023–2027
+                B.E. Medical Electronics Engineering — BMSCE Bengaluru,
+                2023–2027
               </p>
             </div>
           </motion.div>

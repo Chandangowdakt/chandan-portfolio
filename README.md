@@ -1,9 +1,7 @@
 # Chandan K T — Portfolio
 
-Personal portfolio website built with Next.js 14, TypeScript, TailwindCSS, and Framer Motion.
+Personal portfolio built with Next.js 14, TypeScript, TailwindCSS, and Framer Motion.
 
-**Live:** [your-vercel-url]
+**Contact:** chandankt.ml23@bmsce.ac.in | +91 6361239446
 
-**Tech:** Next.js 14 · TypeScript · TailwindCSS · Framer Motion · Lucide Icons
-
-**Contact:** chandankt.ml23@bmsce.ac.in · +91 6361239446
+**GitHub:** https://github.com/Chandangowdakt
