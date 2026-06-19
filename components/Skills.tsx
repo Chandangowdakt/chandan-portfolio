@@ -14,6 +14,22 @@ const categories = [
   "Tools",
 ] as const;
 
+function SkillTag({ skill }: { skill: string }) {
+  return (
+    <motion.span
+      whileHover={{
+        scale: 1.05,
+        backgroundColor: "rgba(45, 212, 191, 0.15)",
+        borderColor: "#2dd4bf",
+      }}
+      transition={{ duration: 0.2 }}
+      className="will-change-transform cursor-default rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf]"
+    >
+      {skill}
+    </motion.span>
+  );
+}
+
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -47,12 +63,7 @@ export default function Skills() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {skills[category].map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf]"
-                  >
-                    {skill}
-                  </span>
+                  <SkillTag key={skill} skill={skill} />
                 ))}
               </div>
             </motion.div>

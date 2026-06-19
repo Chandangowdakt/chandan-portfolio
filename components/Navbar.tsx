@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -72,7 +72,7 @@ export default function Navbar() {
 
   const linkClass = (href: string) => {
     const isActive = activeSection === href.slice(1);
-    return `text-sm transition-colors ${
+    return `flex flex-col items-center text-sm transition-colors ${
       isActive ? "text-[#2dd4bf]" : "text-[#94a3b8] hover:text-[#2dd4bf]"
     }`;
   };
@@ -99,22 +99,38 @@ export default function Navbar() {
             CKT
           </a>
 
-          <ul className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick(link.href);
-                  }}
-                  className={linkClass(link.href)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <LayoutGroup>
+            <ul className="hidden items-center gap-8 md:flex">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLinkClick(link.href);
+                      }}
+                      className={linkClass(link.href)}
+                    >
+                      {link.label}
+                      {isActive && (
+                        <motion.span
+                          layoutId="navIndicator"
+                          className="mx-auto mt-1.5 h-1 w-1 will-change-transform rounded-full bg-[#2dd4bf]"
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </LayoutGroup>
 
           <button
             type="button"

@@ -47,9 +47,18 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             variants={fadeUp}
             transition={{ delay: 0.15 }}
-            className="rounded-xl border border-[#1e293b] bg-[#111827] p-6 sm:p-8"
+            className="relative overflow-hidden rounded-xl border border-[#1e293b] bg-[#111827] p-6 sm:p-8"
           >
-            <div className="space-y-6">
+            <pre
+              className="pointer-events-none absolute bottom-4 right-4 select-none font-mono text-[10px] leading-relaxed text-[#e2e8f0] opacity-[0.04] sm:text-xs"
+              aria-hidden="true"
+            >
+{`const chandan = {
+  role: "Engineer",
+  domain: "Biomedical + Software",
+}`}
+            </pre>
+            <div className="relative z-10 space-y-6">
               <div>
                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#2dd4bf]">
                   Education
@@ -60,7 +69,6 @@ export default function About() {
                 <p className="mt-1 text-sm text-[#94a3b8]">
                   BMSCE Bengaluru | 2023–2027
                 </p>
-                <p className="mt-1 text-sm text-[#94a3b8]">CGPA: 8.5</p>
               </div>
 
               <div className="border-t border-[#1e293b] pt-6">

@@ -11,6 +11,13 @@ type Project = (typeof projects)[number];
 const featuredProjects = projects.filter((project) => project.featured);
 const otherProjects = projects.filter((project) => !project.featured);
 
+const cardHover = {
+  y: -6,
+  boxShadow:
+    "0 0 0 1px rgba(45,212,191,0.4), 0 8px 32px rgba(45,212,191,0.08)",
+  transition: { duration: 0.2 },
+};
+
 function StackPills({ stack, compact = false }: { stack: string[]; compact?: boolean }) {
   return (
     <div className="flex flex-wrap gap-2">
@@ -28,9 +35,37 @@ function StackPills({ stack, compact = false }: { stack: string[]; compact?: boo
   );
 }
 
+function GitHubLink({ project, size = 20 }: { project: Project; size?: number }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span
+        className="-translate-x-2 text-[#2dd4bf] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+        aria-hidden="true"
+      >
+        →
+      </span>
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${project.title} on GitHub`}
+        className="inline-flex text-[#94a3b8] transition-colors hover:text-[#2dd4bf]"
+      >
+        <Github size={size} />
+      </a>
+    </div>
+  );
+}
+
 function FeaturedCard({ project }: { project: Project }) {
   return (
-    <article className="group flex h-full flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-6 transition-all duration-300 hover:border-[#2dd4bf]/40 hover:shadow-lg hover:shadow-[#2dd4bf]/5">
+    <motion.article
+      whileHover={cardHover}
+      className="group relative flex h-full will-change-transform flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-6"
+    >
+      <span className="absolute right-4 top-4 rounded-full border border-[#2dd4bf]/30 bg-[#2dd4bf]/10 px-2 py-0.5 text-xs text-[#2dd4bf]">
+        Featured ✦
+      </span>
       <span className="mb-3 inline-block w-fit rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-xs text-[#2dd4bf]">
         {project.category}
       </span>
@@ -42,23 +77,18 @@ function FeaturedCard({ project }: { project: Project }) {
         <StackPills stack={project.stack} />
       </div>
       <div className="mt-auto pt-6">
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title} on GitHub`}
-          className="inline-flex text-[#94a3b8] transition-colors hover:text-[#2dd4bf]"
-        >
-          <Github size={20} />
-        </a>
+        <GitHubLink project={project} />
       </div>
-    </article>
+    </motion.article>
   );
 }
 
 function CompactCard({ project }: { project: Project }) {
   return (
-    <article className="group flex h-full flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-4 transition-all duration-300 hover:border-[#2dd4bf]/40 hover:shadow-lg hover:shadow-[#2dd4bf]/5">
+    <motion.article
+      whileHover={cardHover}
+      className="group flex h-full will-change-transform flex-col rounded-xl border border-[#1e293b] bg-[#111827] p-4"
+    >
       <span className="mb-2 inline-block w-fit rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-2.5 py-0.5 text-xs text-[#2dd4bf]">
         {project.category}
       </span>
@@ -67,17 +97,9 @@ function CompactCard({ project }: { project: Project }) {
         <StackPills stack={project.stack} compact />
       </div>
       <div className="mt-auto pt-4">
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title} on GitHub`}
-          className="inline-flex text-[#94a3b8] transition-colors hover:text-[#2dd4bf]"
-        >
-          <Github size={18} />
-        </a>
+        <GitHubLink project={project} size={18} />
       </div>
-    </article>
+    </motion.article>
   );
 }
 

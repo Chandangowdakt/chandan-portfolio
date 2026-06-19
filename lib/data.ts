@@ -2,14 +2,13 @@ export const personalInfo = {
   name: "Chandan K T",
   role: "Medical Electronics Engineer · Full Stack Developer · Embedded Systems",
   email: "chandankt.ml23@bmsce.ac.in",
-  phone: "+91-6361239446",
+  phone: "+91 6361239446",
   location: "Bengaluru, Karnataka",
   github: "https://github.com/Chandangowdakt",
   linkedin: "https://linkedin.com/in/chandan-k-t-b2443a353",
   college: "BMS College of Engineering, Bengaluru",
   degree: "B.E. Medical Electronics Engineering",
   year: "2023–2027 (Expected)",
-  cgpa: "8.5",
 };
 
 export const aboutText = [
@@ -141,7 +140,6 @@ export const education = {
   degree: "Bachelor of Engineering — Medical Electronics Engineering",
   college: "BMS College of Engineering, Bengaluru",
   period: "Aug 2023 – 2027 (Expected)",
-  cgpa: "8.5",
   puc: "88.5%",
   sslc: "97.44%",
   certifications: ["MATLAB & Simulink for Computational Engineering — MathWorks (2024)"],

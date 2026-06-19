@@ -28,8 +28,12 @@ export default function Experience() {
               viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
               transition={{ delay: index * 0.1 }}
-              className="rounded-r-xl border border-[#1e293b] border-l-2 border-l-[#2dd4bf] bg-[#111827] p-6"
+              className="relative rounded-r-xl border border-[#1e293b] border-l-2 border-l-[#2dd4bf] bg-[#111827] p-6"
             >
+              <span className="absolute -left-[7px] top-6 flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#2dd4bf] opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-[#2dd4bf]" />
+              </span>
               <h3 className="text-lg font-semibold text-[#e2e8f0]">
                 {item.company}
               </h3>
@@ -68,7 +72,7 @@ export default function Experience() {
                 B.E. Medical Electronics Engineering
               </p>
               <p className="mt-1 text-sm text-[#94a3b8]">
-                BMSCE Bengaluru, 2023–2027, CGPA 8.5
+                BMSCE Bengaluru, 2023–2027
               </p>
             </div>
           </motion.div>

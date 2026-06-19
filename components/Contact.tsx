@@ -1,11 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { fadeUp } from "@/lib/animations";
 
 const iconLinks = [
+  {
+    href: "tel:+916361239446",
+    label: "Phone",
+    icon: Phone,
+  },
   {
     href: "https://github.com/Chandangowdakt",
     label: "GitHub",
@@ -62,14 +67,20 @@ export default function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
           transition={{ delay: 0.2 }}
-          className="mb-10"
+          className="mb-10 flex justify-center"
         >
-          <a
-            href="mailto:chandankt.ml23@bmsce.ac.in"
-            className="inline-block rounded-lg border-2 border-[#2dd4bf] px-10 py-4 text-lg font-medium text-[#2dd4bf] transition-colors hover:bg-[#2dd4bf] hover:text-[#0a0f1c]"
-          >
-            Send an Email
-          </a>
+          <div className="relative inline-block">
+            <span
+              className="pulse-ring pointer-events-none absolute inset-0 rounded-lg bg-[rgba(45,212,191,0.2)]"
+              aria-hidden="true"
+            />
+            <a
+              href="mailto:chandankt.ml23@bmsce.ac.in"
+              className="relative inline-block rounded-lg border-2 border-[#2dd4bf] px-10 py-4 text-lg font-medium text-[#2dd4bf] transition-colors hover:bg-[#2dd4bf] hover:text-[#0a0f1c]"
+            >
+              Send an Email
+            </a>
+          </div>
         </motion.div>
 
         <motion.div
@@ -84,8 +95,16 @@ export default function Contact() {
             <a
               key={label}
               href={href}
-              target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+              target={
+                href.startsWith("mailto") || href.startsWith("tel")
+                  ? undefined
+                  : "_blank"
+              }
+              rel={
+                href.startsWith("mailto") || href.startsWith("tel")
+                  ? undefined
+                  : "noopener noreferrer"
+              }
               aria-label={label}
               className="text-[#94a3b8] transition-colors hover:text-[#2dd4bf]"
             >
