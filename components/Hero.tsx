@@ -216,7 +216,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={heroFadeUp}
-          href="/resume.pdf"
+          href="/resume"
           className="mt-5 text-sm text-[#64748b] underline-offset-4 transition-colors hover:text-[#2dd4bf] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2dd4bf]"
         >
           Download Resume
