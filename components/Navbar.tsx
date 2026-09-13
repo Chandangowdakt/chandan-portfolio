@@ -120,7 +120,7 @@ export default function Navbar() {
                         e.preventDefault();
                         handleLinkClick(link.href);
                       }}
-                      className={linkClass(link.href)}
+                      className={`${linkClass(link.href)} rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2dd4bf]`}
                     >
                       {link.label}
                       {isActive && (

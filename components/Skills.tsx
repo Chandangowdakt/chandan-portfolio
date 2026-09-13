@@ -6,19 +6,17 @@ import SectionHeading from "@/components/SectionHeading";
 import { skills } from "@/lib/data";
 
 const categories = [
-  "Biomedical",
-  "Embedded & IoT",
-  "Backend & Cloud",
-  "Frontend",
-  "AI & Computer Vision",
-  "Tools",
+  "Medical Electronics",
+  "Embedded Systems",
+  "Full Stack",
+  "Programming",
 ] as const;
 
 function SkillTag({ skill }: { skill: string }) {
   return (
     <motion.span
-      whileHover={{ scale: 1.08, transition: { duration: 0.15 } }}
-      className="will-change-transform cursor-default rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf] hover:border-[#2dd4bf] hover:bg-[rgba(45,212,191,0.15)]"
+      whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
+      className="cursor-default rounded-full border border-[#2dd4bf]/20 bg-[#0a0f1c] px-3 py-1 text-sm text-[#2dd4bf] transition-colors hover:border-[#2dd4bf] hover:bg-[rgba(45,212,191,0.12)]"
     >
       {skill}
     </motion.span>
@@ -37,10 +35,10 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <SectionHeading eyebrow="02. Skills" title="What I Work With" />
+          <SectionHeading eyebrow="03. Skills" title="What I Work With" />
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           {categories.map((category, index) => (
             <motion.div
               key={category}
@@ -49,11 +47,11 @@ export default function Skills() {
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
-                delay: index * 0.1,
+                delay: index * 0.08,
               }}
-              className="rounded-xl border border-[#1e293b] bg-[#111827] p-6"
+              className="rounded-xl border border-[#1e293b] bg-[#111827] p-5 sm:p-6"
             >
-              <h3 className="mb-4 text-lg font-semibold text-[#e2e8f0]">
+              <h3 className="mb-4 text-base font-semibold text-[#e2e8f0] sm:text-lg">
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">

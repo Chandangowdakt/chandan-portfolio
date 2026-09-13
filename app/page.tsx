@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import WhatIBuild from "@/components/WhatIBuild";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -12,11 +13,13 @@ import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0f1c]">
+    <main className="min-h-screen overflow-x-hidden bg-[#0a0f1c]">
       <Navbar />
       <Hero />
       <SectionDivider />
       <About />
+      <SectionDivider />
+      <WhatIBuild />
       <SectionDivider />
       <Skills />
       <SectionDivider />

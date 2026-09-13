@@ -14,7 +14,7 @@ const siteUrl = "https://chandankt.dev";
 export const metadata: Metadata = {
   title: "Chandan K T | Medical Electronics Engineer & Full Stack Developer",
   description:
-    "Portfolio of Chandan K T — Medical Electronics Engineering student at BMSCE Bengaluru. Specializing in biomedical instrumentation, embedded systems, and full-stack web development.",
+    "Portfolio of Chandan K T — Medical Electronics Engineering student and Full Stack Development Intern, building biomedical systems, embedded solutions, and production web applications.",
   keywords: [
     "Chandan K T",
     "Medical Electronics",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Chandan K T | Engineer & Developer",
     description:
-      "Portfolio of Chandan K T — biomedical instrumentation, embedded systems, and full-stack development.",
+      "Portfolio of Chandan K T — Medical Electronics Engineering student and Full Stack Development Intern, building biomedical systems, embedded solutions, and production web applications.",
     siteName: "Chandan K T Portfolio",
     url: siteUrl,
   },

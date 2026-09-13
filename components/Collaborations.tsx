@@ -16,7 +16,7 @@ export default function Collaborations() {
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
         >
-          <SectionHeading eyebrow="05. Research" title="Collaborations" />
+          <SectionHeading eyebrow="06. Research" title="Collaborations" />
         </motion.div>
 
         <motion.p

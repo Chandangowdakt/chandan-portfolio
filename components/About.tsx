@@ -5,8 +5,8 @@ import SectionHeading from "@/components/SectionHeading";
 import { fadeUp } from "@/lib/animations";
 
 const paragraphs = [
-  "I'm a 4th-year Medical Electronics Engineering student at BMSCE Bengaluru, working at the intersection of biomedical instrumentation, embedded systems, and full-stack software development.",
-  "I build real-time patient monitoring systems using ESP32 and ECG/PPG sensors, design signal processing pipelines in MATLAB, and develop production-grade web platforms using Node.js and MongoDB. Currently interning as a Full Stack Web Developer at Growteq Agri Tech Pvt Ltd, Bengaluru.",
+  "I'm a Medical Electronics Engineering student and Full Stack Development Intern at Autoyos, with hands-on experience building production web platforms and biomedical systems.",
+  "I build real-time patient monitoring systems using ESP32 and ECG/PPG sensors, design signal processing pipelines in MATLAB, and develop production-grade web platforms using Node.js and MongoDB. Previously completed a Full Stack Web Developer internship at Growteq Agri Tech Pvt Ltd, Bengaluru.",
   "I'm driven by problems that sit at the crossroads of hardware and software — where clinical precision meets scalable engineering.",
 ];
 
@@ -113,10 +113,10 @@ export default function About() {
                   Current Role
                 </h3>
                 <p className="font-medium text-[#e2e8f0]">
-                  Full Stack Web Developer Intern
+                  Intern – Full Stack Development
                 </p>
                 <p className="mt-1 text-sm text-[#94a3b8]">
-                  Growteq Agri Tech Pvt Ltd · Jan 2026–Present
+                  Autoyos Private Limited · Aug 2026–Present
                 </p>
               </motion.div>
             </motion.div>
